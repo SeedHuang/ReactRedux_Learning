@@ -1,0 +1,26 @@
+@mixin border {
+  border: 1px solid #333;
+}
+
+@mixin createItem {
+  height: getHeight();
+  line-height: getHeight();
+  @include border;
+  margin-bottom:10px;
+}
+
+@function getHeight($height: 30) {
+  @return $height + px;
+}
+
+.todolist {
+  @include border
+  padding: 10px;
+  padding-bottom: 0;
+  &__item {
+    @include createItem;
+    &--selected {
+      border: 1px solid red;
+    }
+  }
+}
